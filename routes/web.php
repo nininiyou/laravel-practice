@@ -11,10 +11,36 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front/index');
+Route::get('/', 'FrontController@index');
+
+Route::get('/news', 'FrontController@news');
+
+Route::get('/login', function () {
+    return view('auth/login');
 });
 
-Route::get('/news', function () {
-    return view('front/news');
+Auth::routes();
+
+
+
+Route::group(['middleware' => ['auth'],'prefix' => '/home'], function (){
+    // 首頁
+    Route::get('/', 'HomeController@index');
+
+    // 最新消息管理 (CRUD)
+    // Read
+    Route::get('/news', 'NewsController@index');
+    // Create
+    Route::post('/news/store', 'NewsController@store');
+    // Update
+    // Route::post('/news/update', 'NewsController@edit');
+    // Delete
+    // Route::post('/news/delete', 'NewsController@delete');
 });
+
+
+
+
+
+
+
