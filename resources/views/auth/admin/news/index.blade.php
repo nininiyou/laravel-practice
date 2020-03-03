@@ -32,10 +32,10 @@
                 <td>{{$item->content}}</td>
                 <td>
                 <a href="/home/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
-                <button class="btn btn-danger btn-sm" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-   {{ __('Logout') }}>
-   刪除</button>
+                <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
+                <form id="delete-form-{{$item->id}}" action="/home/news/delete/{{$item->id}}" method="POST" style="display: none;">
+                     @csrf
+                </form>
 
                 </td>
             </tr>
@@ -43,25 +43,6 @@
 
         </tbody>
     </table>
-
-<!-- <form method=POST, action="/home/news/store">
-@csrf
-  <div class="form-group">
-    <label for="exampleInputEmail1">圖片位址</label>
-    <input type="text" class="form-control" id="img" name="img">
-
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">標題</label>
-    <input type="text" class="form-control" id="title" name="title">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">內容</label>
-    <input type="text" class="form-control" id="content" name="content">
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form> -->
 </div>
 
 @endsection
@@ -73,5 +54,15 @@
 $(document).ready(function() {
     $('#example').DataTable();
 } );
+
+function show_confirm(id){
+    console.log(id)
+    var r=confirm("你確定要刪除嗎!?");
+    if (r==true){
+        //使用者確認刪除
+        document.getElementById('delete-form-'+id).submit();
+    }
+}
+
 </script>
 @endsection
