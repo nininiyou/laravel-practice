@@ -34,10 +34,10 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function (){
     Route::get('/news/create', 'NewsController@create');
     Route::post('/news/store', 'NewsController@store');
     // Update
-    Route::post('/news/edit/{id}', 'NewsController@edit');
+    Route::get('/news/edit/{id}', 'NewsController@edit');
     Route::post('/news/update/{id}', 'NewsController@update');
     // Delete
-    Route::post('/news/delete', 'NewsController@delete');
+    Route::post('/news/delete/{id}', 'NewsController@delete');
 });
 
 
