@@ -1,9 +1,8 @@
 @extends('layouts/app')
 
 @section('content')
-
 <div class="container">
-<form method=POST, action="/home/news/store">
+<form method="POST" action="/home/news/store">
 @csrf
   <div class="form-group">
     <label for="exampleInputEmail1">圖片位址</label>

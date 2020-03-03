@@ -23,7 +23,7 @@ Auth::routes();
 
 
 
-Route::group(['middleware' => ['auth'],'prefix' => '/home'], function (){
+Route::group(['middleware' => ['auth'],'prefix' => 'home'], function (){
     // 首頁
     Route::get('/', 'HomeController@index');
 
@@ -31,11 +31,13 @@ Route::group(['middleware' => ['auth'],'prefix' => '/home'], function (){
     // Read
     Route::get('/news', 'NewsController@index');
     // Create
+    Route::get('/news/create', 'NewsController@create');
     Route::post('/news/store', 'NewsController@store');
     // Update
-    // Route::post('/news/update', 'NewsController@edit');
+    Route::post('/news/edit/{id}', 'NewsController@edit');
+    Route::post('/news/update/{id}', 'NewsController@update');
     // Delete
-    // Route::post('/news/delete', 'NewsController@delete');
+    Route::post('/news/delete', 'NewsController@delete');
 });
 
 
