@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -23,9 +24,15 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $news_data = $request->all();
-        News::create($news_data)->save();
+
+        //上傳檔案, 並存到config/filesysytems裡所定義的public位置
+        $file_name = $request->file('img')->store('', 'public');
+        $news_data['img'] = $file_name;
+
+        News::create($news_data);
         return redirect('/home/news');
     }
+
 
     // 可針對特定項目做修改
     // 1. 先抓到對應的id
@@ -39,7 +46,8 @@ class NewsController extends Controller
         return view('auth/admin/news/edit', compact('news'));
     }
     // 2. 再將修改的內容更新上去
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         // 寫法1
         // 將舊的資料一個一個透過新生成的request來取代
         // $news = News::find($id);
@@ -49,13 +57,31 @@ class NewsController extends Controller
         // $news->save();
 
         // 寫法2
-        News::find($id)->update($request->all());
+        // News::find($id)->update($request->all());
+
+        // 為了可以順利編修並刪除舊資料, 改寫如下:
+
+        $request_data = $request->all();
+        $item = News::find($id);
+
+        // 如果有上傳新圖片
+        if ($request->hasFile('img')) {
+            $old_image = $item->img;
+            $file = $request->file('img');
+            $path = $this->fileUpload($file, 'product');
+            $requsetData['img'] = $path;
+            File::delete(public_path() . $old_image);
+        }
+
+        $item->update($requsetData);
+
 
         return redirect('/home/news');
     }
 
 
-    public function delete(Request $request, $id){
+    public function delete(Request $request, $id)
+    {
         $news = News::find($id)->delete();
         return redirect('/home/news');
     }

@@ -19,6 +19,10 @@
             <label for="exampleInputPassword1">內容</label>
             <textarea class="form-control" id="content" name="content" cols="30" row="10">{{$news->content}}</textarea>
           </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">排序</label>
+            <input type="text" class="form-control" id="sort" name="sort" value="{{$news->sort}}">
+          </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
