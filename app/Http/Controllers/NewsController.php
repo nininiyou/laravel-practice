@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\News_Img;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,7 +30,29 @@ class NewsController extends Controller
         $file_name = $request->file('img')->store('', 'public');
         $news_data['img'] = $file_name;
 
-        News::create($news_data);
+        // News::create($news_data);
+        // return redirect('/home/news');
+
+        // -------------------------------------------
+
+        // 變成多張圖上傳改寫
+        $new_news = News::create($news_data);
+
+        if($request->hasFile('news_imgs')){
+            $files = $request->file('news_imgs');
+            foreach ($files as $file){
+                // 上傳圖片
+                $file_name = $request->file('img')->store('', 'public');
+
+                //建立News多張圖片的資料
+                $news_imgs = new News_Img;
+                $news_imgs->news_id = $new_news->id;
+                $news_imgs->img_url = $file_name;
+                $news_imgs->save();
+
+
+            }
+        }
         return redirect('/home/news');
     }
 
@@ -61,19 +84,27 @@ class NewsController extends Controller
 
         // 為了可以順利編修並刪除舊資料, 改寫如下:
 
-        $request_data = $request->all();
+        // 寫法3
         $item = News::find($id);
+        $old_image = $item->img;
+        Storage::disk('public')->delete($old_image);
+        // DB::table('news')->delete($id);
+
+        // 寫法4
+
+        // $request_data = $request->all();
+        // $item = News::find($id);
 
         // 如果有上傳新圖片
-        if ($request->hasFile('img')) {
-            $old_image = $item->img;
-            $file = $request->file('img');
-            $path = $this->fileUpload($file, 'product');
-            $requsetData['img'] = $path;
-            File::delete(public_path() . $old_image);
-        }
+        // if ($request->hasFile('img')) {
+        //     $old_image = $item->img;
+        //     $file = $request->file('img');
+        //     $path = $this->fileUpload($file, 'product');
+        //     $requsetData['img'] = $path;
+        //     File::delete(public_path() . $old_image);
+        // }
 
-        $item->update($requsetData);
+        // $item->update($requsetData);
 
 
         return redirect('/home/news');

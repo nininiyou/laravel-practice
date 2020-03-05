@@ -15,6 +15,9 @@ Route::get('/', 'FrontController@index');
 
 Route::get('/news', 'FrontController@news');
 
+
+Route::get('/news/{id}', 'FrontController@news_detail');
+
 Route::get('/login', function () {
     return view('auth/login');
 });
@@ -39,6 +42,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function (){
     // Delete
     Route::post('/news/delete/{id}', 'NewsController@delete');
 });
+
 
 
 
