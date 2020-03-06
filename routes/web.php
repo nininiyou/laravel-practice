@@ -41,6 +41,11 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function (){
     Route::post('/news/update/{id}', 'NewsController@update');
     // Delete
     Route::post('/news/delete/{id}', 'NewsController@delete');
+    // ajax 多張圖裡可直接在畫面作用刪除
+    Route::post('ajax_delete_news_imgs', 'NewsController@ajax_delete_news_imgs');
+    Route::post('ajax_post_sort', 'NewsController@ajax_post_sort');
+
+
 });
 
 

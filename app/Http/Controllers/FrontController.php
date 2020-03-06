@@ -17,8 +17,8 @@ class FrontController extends Controller
     }
 
     public function news_detail($id){
-        $item = News::find($id);
-        // $item = News::with('news_imgs')->find($id);
+        // $item = News::find($id);
+        $item = News::with('news_imgs')->find($id);
         return view('front/news_detail', compact('item'));
 
     }

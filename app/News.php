@@ -14,6 +14,6 @@ class News extends Model
 
     // 建立關聯資料的功能至new_imgs(接下來news_detail要用這個function)
     public function news_imgs(){
-        return $this->hasMany('App\News_Img');
+        return $this->hasMany('App\News_Img')->orderBy('sort', 'DESC');
     }
 }

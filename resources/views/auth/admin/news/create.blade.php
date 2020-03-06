@@ -1,5 +1,11 @@
 @extends('layouts/app')
 
+@section('css')
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+
+@endsection
+
 @section('content')
 <div class="container">
 <form method="POST" action="/home/news/store" enctype="multipart/form-data">
@@ -22,10 +28,10 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">內容</label>
-    <input type="text" class="form-control" id="content" name="content">
+    <textarea type="text" class="form-control" id="content" name="content"></textarea>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">排序</label>
+    <label for="exampleInputPassword1">權重(數字越大排在越前面)</label>
     <input type="text" class="form-control" id="sort" name="sort">
   </div>
 
@@ -33,4 +39,15 @@
 </form>
 </div>
 
+@endsection
+
+@section('js')
+{{-- // summernote --}}
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#content').summernote();
+    });
+</script>
 @endsection

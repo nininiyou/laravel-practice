@@ -27,10 +27,10 @@
 
             <tr>
                  <td>
-                     <img width="120" src="{{asset('/storage/'.$item->img)}}" alt="">
+                     <img width="120" src="{{$item->img}}" alt="">
                 </td>
                 <td>{{$item->title}}</td>
-                <td>{{$item->content}}</td>
+                <td>{!!$item->content!!}</td>
                 <td>{{$item->sort}}</td>
                 <td>
                 <a href="/home/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
@@ -50,8 +50,14 @@
 @endsection
 
 @section('js')
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+
 <script>
 $(document).ready(function() {
     $('#example').DataTable();
@@ -65,6 +71,5 @@ function show_confirm(id){
         document.getElementById('delete-form-'+id).submit();
     }
 }
-
 </script>
 @endsection
