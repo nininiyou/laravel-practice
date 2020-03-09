@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\ProductType;
+use App\Products;
+
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -22,6 +25,12 @@ class FrontController extends Controller
         return view('front/news_detail', compact('item'));
 
     }
+
+    public function product(){
+        $products_d = Products::orderBy('sort','DESC')->get();
+        return view ('front/product', compact('products_d'));
+    }
+
 
 
 }

@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -17,7 +17,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
     @yield('css')
 
 </head>
@@ -40,16 +40,19 @@
                             </li>
                          <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                   客戶選單<span class="caret"></span>
+                                   產品管理<span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">
-                                    客戶資料                                    
+                                    <a class="dropdown-item" href="/home/product">
+                                    產品管理
                                     </a>
-
-                                    
+                                    <a class="dropdown-item" href="/home/productType">
+                                        產品類型管理
+                                    </a>
                                 </div>
+
+
                         </li>
 
                     </ul>
@@ -98,8 +101,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    
-    
+
+
     @yield('js')
 
 

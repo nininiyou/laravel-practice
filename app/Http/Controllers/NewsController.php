@@ -107,7 +107,7 @@ class NewsController extends Controller
                 $news_imgs->img_url = $path;
                 $news_imgs->save();
             }
-        }
+        } 
         $item->update($request_data);
         return redirect('/home/news');
 

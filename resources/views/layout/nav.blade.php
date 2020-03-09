@@ -67,6 +67,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="/product">
+                        <span class="mbr-iconfont mbr-iconfont-btn"></span>
+                        產品資訊
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="/home">
                         <span class="mbr-iconfont mbr-iconfont-btn"></span>
                         後台管理
