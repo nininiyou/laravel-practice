@@ -42,18 +42,17 @@
 
             @foreach ($productTypes as $item)
                     @if($item->id == $products->type_id)
-                    <option value="{{$item->id}}" selected>
+                    <option value="{{$item->title}}" selected>
                         {{$item->title}}
                     </option>
 
                     @else
-                    <option value="{{$item->id}}">
+                    <option value="{{$item->title}}">
                         {{$item->title}}
                     </option>
                     @endif
             @endforeach
             </select>
-            {{-- <input type="text" class="form-control" id="type_id" name="type_id" value="{{$products->type_id}}"> --}}
           </div>
 
           <div class="form-group">

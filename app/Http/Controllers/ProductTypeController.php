@@ -37,7 +37,7 @@ class ProductTypeController extends Controller
     {
         // 寫法1
         $products = ProductType::find($id);
-        $products->update($request->all());
+        // $products->update($request->all());
 
         return view('auth/admin/productType/edit', compact('products'));
     }

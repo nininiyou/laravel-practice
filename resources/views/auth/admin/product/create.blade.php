@@ -11,29 +11,28 @@
 <form method="POST" action="/home/product/store" enctype="multipart/form-data">
 @csrf
 
-<div class="form-group">
+{{-- <div class="form-group">
     <label for="exampleInputPassword1">產品類型名稱</label>
     <input type="text" class="form-control" id="type_id" name="type_id">
-  </div>
+  </div> --}}
 
   <div class="form-group">
-            <label for="exampleInputPassword1">產品類型名稱</label>
-            <select class="form-control" name="type_id" id="exampleFormControlSelect1">
+    <label for="exampleInputPassword1">產品類型名稱</label>
+    <select class="form-control" name="type_id" id="type_id">
 
-            @foreach ($productTypes as $item)
-                    @if($item->id == $products->type_id)
-                    <option value="{{$item->id}}" selected>
-                        {{$item->title}}
-                    </option>
+    @foreach ($productTypes as $item)
+            {{-- <option value="{{$item->id}}" selected>
+                {{$item->title}}
+            </option>
 
-                    @else
-                    <option value="{{$item->id}}">
-                        {{$item->title}}
-                    </option>
-                    @endif
-            @endforeach
-            </select>
-          </div>
+            @else --}}
+            <option value="{{$item->title}}">
+                {{$item->title}}
+            </option>
+            {{-- @endif --}}
+    @endforeach
+    </select>
+  </div>
 
 
 

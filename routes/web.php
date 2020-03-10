@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'home'], function (){
     Route::post('product/store', 'ProductController@store');
     // Update
     Route::get('product/edit/{id}', 'ProductController@edit');
-    Route::post('products/update/{id}', 'ProductController@update');
+    Route::post('product/update/{id}', 'ProductController@update');
     // Delete
     Route::post('product/delete/{id}', 'ProductController@delete');
 

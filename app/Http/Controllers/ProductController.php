@@ -20,6 +20,7 @@ class ProductController extends Controller
     public function create()
     {
         $productTypes = ProductType::all();
+
         return view('auth/admin/product/create', compact('productTypes'));
     }
     // 2. 再儲存新增的資料
@@ -73,7 +74,7 @@ class ProductController extends Controller
        // 如果有上傳新圖片
        if ($request->hasFile('img')) {
            // 舊圖片刪除
-           $old_image = $item->img;
+           $old_image = $products->img;
            File::delete(public_path().$old_image);
 
            // 上傳新圖片
