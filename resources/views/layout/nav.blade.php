@@ -28,6 +28,9 @@
         }
     </style>
 
+@yield('css')
+
+
 </head>
 <body>
   <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0">
@@ -70,6 +73,12 @@
                     <a class="nav-link link text-white display-4" href="/product">
                         <span class="mbr-iconfont mbr-iconfont-btn"></span>
                         產品資訊
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="/contact">
+                        <span class="mbr-iconfont mbr-iconfont-btn"></span>
+                        聯絡我們
                     </a>
                 </li>
                 <li class="nav-item">

@@ -21,7 +21,6 @@
     @yield('css')
 
     {!! ReCaptcha::htmlScriptTagJsApi() !!}
-
 </head>
 <body>
     <div id="app">

@@ -21,6 +21,8 @@ Route::get('/login', function () {
 });
 
 Route::get('/product', 'FrontController@product');
+Route::get('/contact', 'FrontController@contact');
+
 
 Auth::routes();
 

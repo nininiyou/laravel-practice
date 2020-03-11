@@ -31,6 +31,11 @@ class FrontController extends Controller
         return view ('front/product', compact('products_d'));
     }
 
+    public function contact(){
+        return view ('front/contact_me');
+
+    }
+
 
 
 }
