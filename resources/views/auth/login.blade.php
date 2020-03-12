@@ -20,7 +20,6 @@
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
-                                        OHHHHH
                                     </span>
                                 @enderror
                             </div>
@@ -51,7 +50,17 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- 植入GOOGLE的reCAPTCHA機器人驗證 -->
                         {!! htmlFormSnippet() !!}
+
+                        <!-- 沒有勾選的話, 會跳出的錯誤訊息 -->
+                        @error('g-recaptcha-response')
+                                    <div class="alert alert-danger">
+                                        <!-- 自訂錯誤訊息 -->
+                                        <strong>OHHHH</strong>
+                                    </div>
+                        @enderror
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">

@@ -76,6 +76,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="/product_detail">
+                        <span class="mbr-iconfont mbr-iconfont-btn"></span>
+                        購買產品
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="/contact">
                         <span class="mbr-iconfont mbr-iconfont-btn"></span>
                         聯絡我們
@@ -238,6 +244,7 @@
   <script src="{{asset('assets/gallery/script.js')}}"></script>
   <script src="{{asset('assets/slidervideo/script.js')}}"></script>
 
+  @yield('js')
 
 </body>
 </html>
