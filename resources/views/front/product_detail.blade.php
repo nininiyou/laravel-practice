@@ -352,12 +352,12 @@
                     <h3 class="product-title">容量</h3>
                     <ul class="sku-section__list product-select">
                         <li class="sku-section__item">
-                            <button class="sku-section__button capacity" aria-label="4GB+128GB">
+                            <button class="sku-section__button capacity" data-label="4GB+128GB">
                                 <span>4GB+128GB</span>
                             </button>
                         </li>
                         <li class="sku-section__item">
-                            <button class="sku-section__button capacity" aria-label="4GB+128GB">
+                            <button class="sku-section__button capacity"  data-label="8GB+256GB">
                                 <span>8GB+256GB</span>
                             </button>
                         </li>
@@ -365,13 +365,13 @@
                     <h3 class="product__section-title">顏色</h3>
                     <ul class="sku-section__list product-select">
                         <li class="sku-section__icon-item">
-                            <button class="sku-section__button select" aria-label="夢幻藍">
+                            <button class="sku-section__button select" data-color="夢幻藍">
                                 <i style="background-color: rgb(40, 94, 225);"></i>
                                 <span>夢幻藍</span>
                             </button>
                         </li>
                         <li class="sku-section__icon-item">
-                            <button class="sku-section__button select" aria-label="亮黑色">
+                            <button class="sku-section__button select" data-color="亮黑色">
                                 <i style="background-color: rgb(0, 0, 0);"></i>
                                 <span>亮黑色</span>
                             </button>
@@ -383,14 +383,19 @@
                 <section class="product__section quantity-section">
                     <h3 class="product__section-title">數量</h3>
                     <a id="minus" href="">-</a>
-                    <input type="number" value="1" id="qty">
+                    <input type="number" value="1", id="qty">
                     <a id="plus" href="">+</a>
                 </section>
 
                 <!-- 產品總結 -->
+
                 <section class="product__section order-list-section">
-                    <ul class="order-list-section__list">
-                        <li class="order-list-section__item"><span>Redmi Note 7 夢幻藍 4GB+128GB * 1</span>
+                        <ul class="order-list-section__list">
+                        <li class="order-list-section__item">
+                            <span>Redmi Note
+                                <input type="text" name="product_id" id="product_id">
+                                <input type="text" name="capacity" id="capacity">
+                                <input type="text" name="color" id="color"></span>
                             <div class="order-list-section__item-spacer"></div><strong><small>NT$</small>5,499</strong><del>NT$6,999</del>
                         </li>
                         <li class="order-list-section__item order-list-section__item--total"><span>總計：</span>
@@ -419,18 +424,25 @@
     $('.product-select .capacity').click(function() {
         $('.product-select .capacity').removeClass("active");
         $(this).addClass("active");
+
+        var capacity = $(this).attr("data-label");
+        $('#capacity').val(capacity)
     });
 
     $('.product-select .select').click(function() {
         $('.product-select .select').removeClass("active");
         $(this).addClass("active");
+
+        var color = $(this).attr("data-color");
+        $('#color').val(color)
     });
 
 
     var valueElement = $('#qty');
     function incrementValue(e){
         var now_number = $('#qty').val();
-        var new_bumber = Math.max(e.data.increment + parseInt(now_number), 0);
+        console.log('now_number')
+        var new_bumber = e.data.increment + parseInt(now_number);
         $('#qty').val(new_number);
 
         return false;

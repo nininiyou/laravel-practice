@@ -20,8 +20,15 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
-Route::get('/product', 'FrontController@product');
-Route::get('/product_detail', 'FrontController@product_detail');
+// 產品購物車
+Route::get('/product', 'FrontController@product'); //產品介面
+Route::get('/product/{id}', 'FrontController@product_detail'); //產品資訊購買頁
+Route::get('/product_order', 'FrontController@test_product_detail'); //cart結帳頁
+Route::get('/add_cart/{product_id}', 'FrontController@add_cart'); //cart 加入購物車
+Route::get('/cart', 'FrontController@cart_total'); //cart 總覽
+
+
+
 Route::get('/contact', 'FrontController@contact');
 
 

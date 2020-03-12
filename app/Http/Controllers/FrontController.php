@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\News;
-use App\ProductType;
 use App\Products;
+use App\ProductType;
 
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -26,6 +28,7 @@ class FrontController extends Controller
 
     }
 
+    // -----產品資訊 & 產品購物車-----
     public function product(){
         $products_d = Products::orderBy('sort','DESC')->get();
         return view ('front/product', compact('products_d'));
@@ -34,6 +37,32 @@ class FrontController extends Controller
     public function product_detail(){
         return view ('front/product_detail');
     }
+
+    public function add_cart($productId){
+
+        $productId = 1;
+        $Product = Products::find($productId); // assuming you have a Product model with id, name, description & price
+        $rowId = $productId; // generate a unique() row ID
+        $userID = Auth::user()->id; // the user ID to bind the cart contents
+
+        // add the product to cart
+        Cart::session($userID)->add(array(
+            'id' => $rowId,
+            'name' => $Product->title,
+            'price' => $Product->price,
+            'quantity' => 4,
+            'attributes' => array(),
+            'associatedModel' => $Product
+        ));
+    }
+
+    public function cart_total(){
+        $userID = Auth::user()->id; // the user ID to bind the cart contents
+        $items = \Cart::session($userID)->getContent();
+        dd($items);
+        // return view('front/cart', compact('items'));
+    }
+
 
 
 
