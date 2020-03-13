@@ -383,7 +383,7 @@
                 <section class="product__section quantity-section">
                     <h3 class="product__section-title">數量</h3>
                     <a id="minus" href="">-</a>
-                    <input type="number" value="1", id="qty">
+                    <input type="number" value="1", id="qty" min="0">
                     <a id="plus" href="">+</a>
                 </section>
 
@@ -441,8 +441,8 @@
     var valueElement = $('#qty');
     function incrementValue(e){
         var now_number = $('#qty').val();
-        console.log('now_number')
-        var new_bumber = e.data.increment + parseInt(now_number);
+        // console.log('now_number')
+        var new_bumber = Math.max(e.data.increment + parseInt(now_number), 0);
         $('#qty').val(new_number);
 
         return false;

@@ -18,6 +18,7 @@
                 <th>圖片</th>
                 <th>標題</th>
                 <th>內容</th>
+                <th>價格</th>
                 <th>權重</th>
                 <th width='80px'></th>
             </tr>
@@ -32,6 +33,7 @@
                </td>
                 <td>{{$item->title}}</td>
                 <td>{!!$item->content!!}</td>
+                <td>{{$item->price}}</td>
                 <td>{{$item->sort}}</td>
                 <td>
                 <a href="/home/product/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
