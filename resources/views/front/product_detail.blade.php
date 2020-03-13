@@ -390,6 +390,7 @@
                 <!-- 產品總結 -->
 
                 <section class="product__section order-list-section">
+                <form action="/add_cart/{{$Product->id}}" method="POST"></form>
                         <ul class="order-list-section__list">
                         <li class="order-list-section__item">
                             <span>Redmi Note
