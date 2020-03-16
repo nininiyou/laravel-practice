@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\News;
 use App\Products;
+use App\ContactUs;
+use App\Mail\OrderShipped;
 use App\ProductType;
 
+use App\Mail\SendToUser;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -67,6 +71,15 @@ class FrontController extends Controller
     public function contact(){
         return view ('front/contact_me');
 
+    }
+
+    public function contact_store(Request $request){
+        $user_data = $request->all();
+        $content = ContactUs::create($user_data);
+
+        Mail::to('nininiyou@gmail.com')->send(new OrderShipped($content));
+
+        return redirect ('/contact');
     }
 
 

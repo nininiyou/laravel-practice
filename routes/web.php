@@ -30,6 +30,8 @@ Route::get('/cart', 'FrontController@cart_total'); //cart 總覽
 
 
 Route::get('/contact', 'FrontController@contact');
+Route::post('/contact/store', 'FrontController@contact_store');
+
 
 
 Auth::routes();

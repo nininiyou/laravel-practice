@@ -41,7 +41,9 @@
                 </div>
                 <div data-form-type="formoid">
                     <!---Formbuilder Form--->
-                    <form action="https://mobirise.com/" method="POST" class="mbr-form form-with-styler" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="XUyly3u4WUmZQ1cT4u0KW2q7+bCPo0/cc0O8BQtQOTBexvgvzOWCAA6Ini7SABHGUw7pIF9qzUKzBN5SZkMZRW2rKtjAkPT9wAEa2y+4/hdMp9SX+3Uvy1yyv338glMo">
+                    <form action="/contact/store" method="POST" class="mbr-form form-with-styler" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="email" data-form-email="true">                     
                         <div class="row">
                             <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
                             <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
