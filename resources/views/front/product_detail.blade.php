@@ -383,14 +383,15 @@
                 <section class="product__section quantity-section">
                     <h3 class="product__section-title">數量</h3>
                     <a id="minus" href="">-</a>
-                    <input type="number" value="1", id="qty" min="0">
+                    <input type="number" value="1" id="qty" min="0">
                     <a id="plus" href="">+</a>
                 </section>
 
                 <!-- 產品總結 -->
 
                 <section class="product__section order-list-section">
-                <form action="/add_cart/{{$Product->id}}" method="POST"></form>
+                <form action="/add_cart/{{$Product->id}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                         <ul class="order-list-section__list">
                         <li class="order-list-section__item">
                             <span>Redmi Note
@@ -403,15 +404,17 @@
                             <div class="order-list-section__item-spacer"></div><strong><small>NT$</small>5,499</strong><del>NT$6,999</del>
                         </li>
                     </ul>
+
                 </section>
 
                 <!-- 立即購買 -->
                 <section class="product__section add-cart-section">
                     <div class="add-cart-section__wrap">
-                        <div class="add-cart-section__submit-group"><button class="add-cart-section__btn add-cart-section__submit add-cart-section__submit--main" aria-label="立即購買">立即購買</button></div>
+                        <div class="add-cart-section__submit-group"><button aria-label="立即購買">立即購買</button></div>
                     </div>
                     <div class="mi-input-alert"></div>
                 </section>
+            </form>
             </div>
 
         </div>

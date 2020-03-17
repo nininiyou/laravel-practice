@@ -117,7 +117,7 @@
 @endsection
 
 @section('news')
-<section class="engine"><a href="https://mobirise.info/x">css templates</a></section><section class="features3 cid-rRF3umTBWU" id="features3-7">
+<section class="features3 cid-rRF3umTBWU" id="features3-7">
     <div class="container">
         <div class="Cart">
             <div class="Cart__header">
@@ -128,17 +128,16 @@
               <div class="Cart__headerGrid">刪除</div>
             </div>
             {{-- 產品價目 --}}
-            {{$items}}
+            @foreach ($items as $item)
             <div class="Cart__product">
-              <div class="Cart__productGrid Cart__productImg"></div>
-              <div class="Cart__productGrid Cart__productTitle">
-                DELL 戴爾 U3417W 34型 21:9 WQHD IPS曲面液晶螢幕《原廠三年保固》
+                <div class="Cart__productGrid Cart__productImg"></div>
+                <div class="Cart__productGrid Cart__productTitle">{{$item->name}}</div>
+                <div class="Cart__productGrid Cart__productPrice">{{$item->price}}</div>
+                <div class="Cart__productGrid Cart__productQuantity">{{$item->quantity}}</div>
+                <div class="Cart__productGrid Cart__productTotal">{{$item->price * $item->quantity}}</div>
+                <div class="Cart__productGrid Cart__productDel">&times;</div>
               </div>
-              <div class="Cart__productGrid Cart__productPrice">$32,500</div>
-              <div class="Cart__productGrid Cart__productQuantity">2</div>
-              <div class="Cart__productGrid Cart__productTotal">$65,000</div>
-              <div class="Cart__productGrid Cart__productDel">&times;</div>
-            </div>
+              @endforeach
 
           </div>
 

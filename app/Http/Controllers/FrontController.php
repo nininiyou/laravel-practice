@@ -38,30 +38,32 @@ class FrontController extends Controller
         return view ('front/product', compact('products_d'));
     }
 
-    public function product_detail(){
-        return view ('front/product_detail');
+    public function product_detail($id){
+        $Product = Products::find($id);
+        return view ('front/product_detail',  compact('Product'));
     }
 
-    public function add_cart(){
-        $id = 2;
-        $Product = Products::find($id); // assuming you have a Product model with id, name, description & price
-        $rowId = 456; // generate a unique() row ID
-        $userID = Auth::user()->id; // the user ID to bind the cart contents
+    public function add_cart($productId){
+
+        $Product = Products::find($productId); // assuming you have a Product model with id, name, description & price
+        $rowId = $productId; // generate a unique() row ID
 
         // add the product to cart
-        \Cart::session($userID)->add(array(
+       \Cart::add(array(
             'id' => $rowId,
             'name' => $Product->title,
             'price' => $Product->price,
-            'quantity' => 4,
+            'quantity' =>  1,
+            'img' => $Product->img,
             'attributes' => array(),
             'associatedModel' => $Product
         ));
+
+        return redirect('cart');
     }
 
     public function cart_total(){
-        $userID = Auth::user()->id; // the user ID to bind the cart contents
-        $items = \Cart::session($userID)->getContent();
+        $items = \Cart::getContent();
         return view('front/cart', compact('items'));
     }
 

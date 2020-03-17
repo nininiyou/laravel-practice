@@ -55,12 +55,17 @@
 
   <div class="form-group">
     <label for="exampleInputPassword1">價格</label>
-    <input type="text" class="form-control" id="price" name="price">
+    <input type="number" class="form-control" id="price" name="price">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">數量</label>
+    <input type="number" class="form-control" id="quantity" name="price">
   </div>
 
   <div class="form-group">
     <label for="exampleInputPassword1">權重(數字越大排在越前面)</label>
-    <input type="text" class="form-control" id="sort" name="sort">
+    <input type="number" class="form-control" id="sort" name="sort">
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

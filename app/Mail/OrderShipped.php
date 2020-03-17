@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\ContactUs;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +17,9 @@ class OrderShipped extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ContactUs $content)
     {
-        //
+        $this->content = $content;
     }
 
     /**
@@ -28,6 +29,9 @@ class OrderShipped extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.orders.shipped');
+        return $this->subject('感謝來信')->markdown('emails.orders.shipped')->with('content', $this->content);
+
+        // subject->信件標題
+        // attach->附件
     }
 }

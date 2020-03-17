@@ -19,6 +19,8 @@ class CreateProducts extends Migration
             $table->text('img');
             $table->text('title')->default('text');
             $table->longText('content')->default('TEXT');
+            $table->integer('price')->default(0);
+            $table->integer('quantity')->default(0);
             $table->integer('sort')->default(0);
             $table->timestamps();
         });

@@ -82,6 +82,11 @@
           </div>
 
           <div class="form-group">
+            <label for="exampleInputPassword1">數量</label>
+            <input type="number" class="form-control" id="quantity" name="price" value="{{$products->quantity}}">
+          </div>
+
+          <div class="form-group">
             <label for="exampleInputPassword1">權重(數字越大排在越前面)</label>
             <input type="text" class="form-control" id="sort" name="sort" value="{{$products->sort}}">
           </div>
