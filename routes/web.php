@@ -37,6 +37,11 @@ Route::get('/contact', 'FrontController@contact');
 Route::post('/contact/store', 'FrontController@contact_store');
 
 
+Route::get('/test_check_out', 'FrontController@test_check_out');
+
+
+
+
 
 Auth::routes();
 

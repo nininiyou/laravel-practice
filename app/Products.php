@@ -9,7 +9,7 @@ class Products extends Model
     protected $table='products';
 
     protected $fillable = [
-        'type_id', 'img','title', 'content','price','quantity', 'sort'
+        'type_id', 'img','title', 'content','price', 'quantity', 'sort'
     ];
 
     public function product_type(){

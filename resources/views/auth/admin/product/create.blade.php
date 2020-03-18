@@ -60,7 +60,7 @@
 
   <div class="form-group">
     <label for="exampleInputPassword1">數量</label>
-    <input type="number" class="form-control" id="quantity" name="price">
+    <input type="number" class="form-control" id="quantity" name="quantity">
   </div>
 
   <div class="form-group">

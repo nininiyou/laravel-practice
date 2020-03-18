@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
+use TsaiYiHua\ECPay\Checkout;
+
 class FrontController extends Controller
 {
     public function index(){
@@ -67,8 +69,24 @@ class FrontController extends Controller
         return view('front/cart', compact('items'));
     }
 
+// 測試綠界金流
+protected $checkout;
 
+    public function __construct(Checkout $checkout)
+    {
+        $this->checkout = $checkout;
+    }
 
+    public function test_check_out(){
+        $formData = [
+            'UserId' => 1, // 用戶ID , Optional
+            'ItemDescription' => '產品簡介',
+            'ItemName' => 'Product Name',
+            'TotalAmount' => '2000',
+            'PaymentMethod' => 'Credit', // ALL, Credit, ATM, WebATM
+        ];
+        return $this->checkout->setPostData($formData)->send();
+    }
 
     public function contact(){
         return view ('front/contact_me');
